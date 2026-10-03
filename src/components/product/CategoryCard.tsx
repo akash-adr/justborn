@@ -24,7 +24,7 @@ export function CategoryCard({ category }: { category: Category }) {
           <span className="text-xs font-bold px-3 py-1 rounded-full bg-white/90 text-stone-700 shadow-sm backdrop-blur-sm border border-stone-100">
             {category.itemCount} Toys
           </span>
-          <div className="w-9 h-9 rounded-full bg-white/90 flex items-center justify-center text-stone-700 group-hover:bg-[#E76F51] group-hover:text-white transition-colors shadow-sm">
+          <div className="w-9 h-9 rounded-full bg-white/90 flex items-center justify-center text-stone-700 group-hover:bg-[#E63946] group-hover:text-white transition-colors shadow-sm">
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
         </div>
@@ -43,7 +43,7 @@ export function CategoryCard({ category }: { category: Category }) {
 
         {/* Bottom Details */}
         <div className="relative z-10 pt-2 text-center">
-          <h3 className="font-extrabold text-stone-900 text-base sm:text-lg group-hover:text-[#E76F51] transition-colors">
+          <h3 className="font-extrabold text-stone-900 text-base sm:text-lg group-hover:text-[#E63946] transition-colors">
             {category.name}
           </h3>
           <p className="text-xs text-stone-500 mt-1 line-clamp-1 font-medium">

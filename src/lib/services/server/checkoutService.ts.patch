@@ -1,0 +1,30 @@
+--- src/lib/services/server/checkoutService.ts
++++ src/lib/services/server/checkoutService.ts
+@@ -43,15 +43,18 @@
+       // Calculate final total with promo code
+       let { subtotal, shippingFee, items } = cartResult.data;
+       let discountAmount = 0;
+       
+       if (promoCode) {
+-        const promo = VALID_PROMOS[promoCode.trim().toUpperCase()];
+-        if (promo && subtotal > 0) {
+-          if (promo.type === 'percentage') {
+-            discountAmount = Math.round((subtotal * promo.value) / 100);
+-          } else if (promo.type === 'fixed') {
+-            discountAmount = Math.min(subtotal, promo.value);
++        // Fetch coupon from DB instead of hardcoded VALID_PROMOS
++        const { data: couponData } = await supabase
++          .from('coupons')
++          .select('*')
++          .eq('code', promoCode.trim().toUpperCase())
++          .eq('is_active', true)
++          .single();
++          
++        if (couponData && subtotal > 0) {
++          if (couponData.discount_type === 'percentage') {
++            discountAmount = Math.round((subtotal * couponData.discount_value) / 100);
++          } else if (couponData.discount_type === 'fixed') {
++            discountAmount = Math.min(subtotal, couponData.discount_value);
+           }
+         }
+       }

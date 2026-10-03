@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { ToastProvider } from '@/context/ToastContext';
+import { AuthProvider } from '@/context/AuthContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { CartProvider } from '@/context/CartContext';
 import { Navbar } from '@/components/layout/Navbar';
@@ -37,16 +38,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={jakarta.variable}>
-      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#26221F] font-sans antialiased selection:bg-[#FED3C7] selection:text-[#9A3412]">
+      <body className="min-h-screen flex flex-col bg-white text-stone-900 font-sans antialiased selection:bg-red-100 selection:text-red-700">
         <ToastProvider>
-          <WishlistProvider>
+          <AuthProvider>
             <CartProvider>
-              <Navbar />
-              <CartDrawer />
-              <main className="flex-1 flex flex-col">{children}</main>
-              <Footer />
+              <WishlistProvider>
+                <Navbar />
+                <CartDrawer />
+                <main className="flex-1 flex flex-col">{children}</main>
+                <Footer />
+              </WishlistProvider>
             </CartProvider>
-          </WishlistProvider>
+          </AuthProvider>
         </ToastProvider>
       </body>
     </html>

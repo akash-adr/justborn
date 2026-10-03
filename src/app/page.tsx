@@ -1,6 +1,6 @@
 import React from 'react';
 import { productService } from '@/lib/services/productService';
-import { HeroSection } from '@/components/home/HeroSection';
+import { JustBornHero } from '@/components/hero/JustBornHero';
 import { FeaturedCategories } from '@/components/home/FeaturedCategories';
 import { FeaturedProducts } from '@/components/home/FeaturedProducts';
 import { NewArrivals } from '@/components/home/NewArrivals';
@@ -17,8 +17,8 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. Hero Section */}
-      <HeroSection />
+      {/* 1. Just Born Interactive Storefront Hero */}
+      <JustBornHero />
 
       {/* 2. Featured Categories */}
       <FeaturedCategories />

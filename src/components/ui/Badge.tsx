@@ -43,7 +43,7 @@ export function Badge({ children, variant = 'default', className, size = 'sm' }:
   );
 }
 
-export function ProductBadgeTag({ badge }: { badge: ProductBadge }) {
+export function ProductBadgeTag({ badge }: { badge: ProductBadge | string }) {
   switch (badge) {
     case 'Bestseller':
       return (

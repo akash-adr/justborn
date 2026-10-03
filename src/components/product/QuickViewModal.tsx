@@ -61,7 +61,7 @@ export function QuickViewModal({
                   key={i}
                   onClick={() => setSelectedImg(i)}
                   className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition ${
-                    selectedImg === i ? 'border-[#E76F51]' : 'border-stone-200 opacity-70'
+                    selectedImg === i ? 'border-[#E63946]' : 'border-stone-200 opacity-70'
                   }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -124,7 +124,7 @@ export function QuickViewModal({
               <span>Certified 100% Non-Toxic & Child-Safe Finishes</span>
             </div>
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-500" />
+              <Sparkles className="w-4 h-4 text-[#E63946]" />
               <span>Heirloom construction built for decades of wonder</span>
             </div>
           </div>
@@ -135,7 +135,8 @@ export function QuickViewModal({
               <div className="flex items-center border border-stone-200 rounded-full p-1 bg-stone-50">
                 <button
                   onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white text-stone-700 transition"
+                  disabled={qty <= 1}
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white text-stone-700 disabled:opacity-40 transition cursor-pointer"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="w-3.5 h-3.5" />
@@ -144,9 +145,17 @@ export function QuickViewModal({
                   {qty}
                 </span>
                 <button
-                  onClick={() => setQty((q) => q + 1)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white text-stone-700 transition"
+                  onClick={() =>
+                    setQty((q) => Math.min(product.stockCount ?? 99, q + 1))
+                  }
+                  disabled={qty >= (product.stockCount ?? 99)}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition ${
+                    qty < (product.stockCount ?? 99)
+                      ? 'hover:bg-white text-stone-700 cursor-pointer'
+                      : 'opacity-30 cursor-not-allowed text-stone-300'
+                  }`}
                   aria-label="Increase quantity"
+                  title={qty >= (product.stockCount ?? 99) ? 'Maximum available stock reached' : 'Increase quantity'}
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
@@ -154,20 +163,27 @@ export function QuickViewModal({
 
               <button
                 onClick={() => toggleWishlist(product)}
-                className={`p-2.5 rounded-full border transition ${
+                className={`p-2.5 rounded-full border transition cursor-pointer ${
                   wishlisted
-                    ? 'bg-rose-50 border-rose-200 text-rose-500'
-                    : 'border-stone-200 text-stone-500 hover:text-stone-900'
+                    ? 'bg-red-50 border-red-200 text-[#E63946]'
+                    : 'border-stone-200 text-stone-500 hover:text-[#E63946]'
                 }`}
                 aria-label="Wishlist"
               >
-                <Heart className={`w-5 h-5 ${wishlisted ? 'fill-rose-500' : ''}`} />
+                <Heart className={`w-5 h-5 ${wishlisted ? 'fill-[#E63946]' : ''}`} />
               </button>
             </div>
 
             <div className="flex gap-2.5">
-              <Button onClick={handleAdd} size="lg" className="flex-1">
-                Add to Basket • {formatPrice(product.price * qty)}
+              <Button
+                onClick={handleAdd}
+                size="lg"
+                disabled={!product.inStock || (product.stockCount ?? 1) <= 0}
+                className="flex-1"
+              >
+                {!product.inStock || (product.stockCount ?? 1) <= 0
+                  ? 'Out of Stock'
+                  : `Add to Basket • ${formatPrice(product.price * qty)}`}
               </Button>
             </div>
 
@@ -175,7 +191,7 @@ export function QuickViewModal({
               <Link
                 href={`/product/${product.slug}`}
                 onClick={onClose}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#E76F51] hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#E63946] hover:underline"
               >
                 <span>View Full Toy Specifications & Story</span>
                 <ArrowRight className="w-3 h-3" />

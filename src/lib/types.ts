@@ -2,6 +2,16 @@ export type AgeGroup = '0-12m' | '1-2y' | '3-4y' | '5-7y' | '8+y';
 
 export type ProductBadge = 'Bestseller' | 'New' | 'Eco-Friendly' | 'Heirloom' | 'Sale' | 'Montessori';
 
+export interface ProductVariant {
+  id: string;
+  productId: string;
+  name: string;
+  sku?: string;
+  price: number;
+  stockQuantity: number;
+  attributes?: Record<string, any>;
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -13,12 +23,12 @@ export interface Product {
   originalPrice?: number;
   category: string;
   categorySlug: string;
-  ageGroup: AgeGroup;
+  ageGroup: AgeGroup | string;
   materials: string[];
   rating: number;
   reviewCount: number;
   images: string[];
-  badges: ProductBadge[];
+  badges: ProductBadge[] | string[];
   inStock: boolean;
   stockCount: number;
   dimensions?: string;
@@ -26,6 +36,17 @@ export interface Product {
   isFeatured?: boolean;
   isNewArrival?: boolean;
   isBestSeller?: boolean;
+  brand?: string;
+  sku?: string;
+  variants?: ProductVariant[];
+}
+
+export interface PaginatedProducts {
+  products: Product[];
+  total: number;
+  page: number;
+  totalPages: number;
+  hasMore: boolean;
 }
 
 export interface Category {
@@ -59,6 +80,25 @@ export interface CartItem {
   product: Product;
   quantity: number;
   selectedColor?: string;
+  variantId?: string | null;
+  variant?: ProductVariant | null;
+}
+
+export interface CartCalculationResult {
+  items: CartItem[];
+  subtotal: number;
+  shippingFee: number;
+  freeShippingThreshold: number;
+  discountAmount: number;
+  itemCount: number;
+  total: number;
+  stockIssues?: Array<{
+    productId: string;
+    productName: string;
+    requestedQuantity: number;
+    availableStock: number;
+    adjustedQuantity: number;
+  }>;
 }
 
 export interface OrderItem {
@@ -89,12 +129,28 @@ export interface Order {
   trackingNumber?: string;
 }
 
+export interface CustomerAddress {
+  id: string;
+  userId?: string;
+  fullName: string;
+  phone: string;
+  addressLine1: string;
+  addressLine2?: string | null;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  isDefault: boolean;
+  createdAt?: string;
+}
+
 export interface UserProfile {
   id: string;
   email: string;
   fullName: string;
   avatarUrl?: string;
   phone?: string;
+  role?: 'customer' | 'admin' | string;
   childrenAges?: string[];
   savedAddresses?: Array<{
     id: string;

@@ -38,17 +38,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles: Record<ButtonVariant, string> = {
       primary:
-        'bg-[#E76F51] text-white hover:bg-[#D65A3B] active:bg-[#B84729] shadow-md shadow-[#E76F51]/20 hover:shadow-lg hover:shadow-[#E76F51]/30 focus-visible:ring-[#E76F51]',
+        'bg-[#D9232E] text-white hover:bg-[#BF1620] active:bg-[#9E1019] shadow-md shadow-[#D9232E]/25 hover:shadow-lg hover:shadow-[#D9232E]/35 focus-visible:ring-[#D9232E]',
       secondary:
-        'bg-[#26221F] text-white hover:bg-stone-800 active:bg-stone-900 shadow-sm focus-visible:ring-stone-900',
+        'bg-[#111827] text-white hover:bg-stone-800 active:bg-stone-900 shadow-sm focus-visible:ring-stone-900',
       outline:
-        'border-2 border-stone-200 bg-transparent text-stone-800 hover:border-stone-300 hover:bg-stone-100/60 focus-visible:ring-stone-400',
+        'border-2 border-stone-200 bg-white text-stone-800 hover:border-red-200 hover:bg-red-50/40 hover:text-[#D9232E] focus-visible:ring-red-400',
       ghost:
         'bg-transparent text-stone-700 hover:bg-stone-100/80 active:bg-stone-200/70 focus-visible:ring-stone-300',
       soft:
-        'bg-[#FDF2EE] text-[#D65A3B] hover:bg-[#FCE6DF] active:bg-[#F9D6CC] focus-visible:ring-[#E76F51]/40',
+        'bg-red-50 text-[#D9232E] hover:bg-red-100 active:bg-red-200 focus-visible:ring-red-400',
       danger:
-        'bg-rose-500 text-white hover:bg-rose-600 active:bg-rose-700 shadow-sm focus-visible:ring-rose-500',
+        'bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 shadow-sm focus-visible:ring-rose-500',
     };
 
     const sizeStyles: Record<ButtonSize, string> = {

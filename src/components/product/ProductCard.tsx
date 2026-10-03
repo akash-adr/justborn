@@ -61,7 +61,7 @@ export function ProductCard({ product, onQuickView, priority = false }: ProductC
             <ProductBadgeTag key={b} badge={b} />
           ))}
           {discountPercentage && (
-            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-500 text-white shadow-sm">
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#E63946] text-white shadow-sm">
               Save {discountPercentage}%
             </span>
           )}
@@ -75,14 +75,14 @@ export function ProductCard({ product, onQuickView, priority = false }: ProductC
           }}
           className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-sm ${
             wishlisted
-              ? 'bg-rose-50 text-rose-500 ring-2 ring-rose-200'
-              : 'bg-white/90 text-stone-600 hover:text-rose-500 hover:bg-white backdrop-blur-sm'
+              ? 'bg-red-50 text-[#E63946] ring-2 ring-red-200'
+              : 'bg-white/90 text-stone-600 hover:text-[#E63946] hover:bg-white backdrop-blur-sm'
           }`}
           aria-label={wishlisted ? 'Remove from favorites' : 'Add to favorites'}
         >
           <Heart
             className={`w-4 h-4 transition-transform active:scale-125 ${
-              wishlisted ? 'fill-rose-500' : ''
+              wishlisted ? 'fill-[#E63946]' : ''
             }`}
           />
         </button>
@@ -117,7 +117,7 @@ export function ProductCard({ product, onQuickView, priority = false }: ProductC
 
         <Link
           href={`/product/${product.slug}`}
-          className="group-hover:text-[#E76F51] transition-colors"
+          className="group-hover:text-[#E63946] transition-colors"
         >
           <h3 className="font-bold text-stone-900 text-base line-clamp-1 leading-snug">
             {product.name}
@@ -141,14 +141,20 @@ export function ProductCard({ product, onQuickView, priority = false }: ProductC
             )}
           </div>
 
-          <button
-            onClick={() => addToCart(product, 1, true)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-[#FFF2EE] text-[#D65A3B] hover:bg-[#E76F51] hover:text-white transition-all duration-200 active:scale-95 shadow-sm"
-            aria-label={`Add ${product.name} to bag`}
-          >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span>Add</span>
-          </button>
+          {product.inStock && (product.stockCount ?? 1) > 0 ? (
+            <button
+              onClick={() => addToCart(product, 1, true)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-red-50 text-[#E63946] hover:bg-[#E63946] hover:text-white transition-all duration-200 active:scale-95 shadow-xs cursor-pointer"
+              aria-label={`Add ${product.name} to bag`}
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>Add</span>
+            </button>
+          ) : (
+            <span className="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-400 cursor-not-allowed">
+              Sold Out
+            </span>
+          )}
         </div>
       </div>
     </motion.div>

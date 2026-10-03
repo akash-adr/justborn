@@ -7,18 +7,18 @@ import { Star, CheckCircle, Quote, Sparkles } from 'lucide-react';
 
 export function CustomerReviews() {
   return (
-    <section className="py-20 bg-[#FFFDF9] border-y border-stone-200/60">
+    <section className="py-20 bg-white border-t border-stone-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D65A3B] uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Stories From The Nursery</span>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#E63946] uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-[#E63946]" />
+            <span>Stories From Playrooms Across India</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
             Loved by 12,000+ Happy Families
           </h2>
           <p className="text-sm text-stone-500 mt-2">
-            Read heartfelt thoughts from real parents, early-childhood educators, and proud aunties.
+            Read thoughts from real parents, Montessori educators, and pediatricians.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export function CustomerReviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.1 }}
-              className="rounded-3xl bg-white border border-stone-200/80 p-6 flex flex-col justify-between warm-shadow"
+              className="rounded-3xl bg-white border border-stone-200/90 p-6 flex flex-col justify-between shadow-xs hover:border-red-200 hover:shadow-lg transition-all"
             >
               <div>
                 {/* Rating stars & Quote Icon */}
@@ -41,7 +41,7 @@ export function CustomerReviews() {
                       <Star key={idx} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <Quote className="w-5 h-5 text-stone-300" />
+                  <Quote className="w-5 h-5 text-red-100" />
                 </div>
 
                 <h4 className="text-sm font-bold text-stone-900 leading-snug mb-2">

@@ -18,35 +18,35 @@ export function NewsletterSection() {
     showToast({
       type: 'success',
       title: 'Welcome to the Playroom! 🎁',
-      message: 'Your $15 gift code JUSTBORN15 has been reserved for your first order.',
+      message: 'Your ₹500 gift voucher code JUSTBORN500 has been reserved for your first order.',
     });
   };
 
   return (
-    <section className="py-20 bg-[#FDFBF7] relative overflow-hidden">
+    <section className="py-20 bg-white border-t border-stone-100 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-[3rem] bg-gradient-to-br from-[#FFF5F2] via-[#FDFAF6] to-[#FFF0EB] border border-[#FED3C7]/80 p-8 sm:p-14 text-center warm-shadow-lg relative overflow-hidden"
+          className="rounded-[3rem] bg-gradient-to-br from-red-50/60 via-white to-red-50/40 border border-red-200/80 p-8 sm:p-14 text-center clean-shadow-lg relative overflow-hidden"
         >
           {/* Subtle Ambient Dots */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E76F51]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E9C46A]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-red-100/50 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-rose-100/40 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-xl mx-auto">
-            <div className="w-14 h-14 rounded-3xl bg-white text-[#E76F51] flex items-center justify-center mx-auto mb-5 shadow-md border border-[#FED3C7]">
+            <div className="w-14 h-14 rounded-3xl bg-white text-[#E63946] flex items-center justify-center mx-auto mb-5 shadow-sm border border-red-200">
               <Gift className="w-7 h-7" />
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-              Enjoy $15 Off Your First Keepsake Toy
+              Enjoy ₹500 Off Your First Keepsake Toy
             </h2>
 
             <p className="text-sm sm:text-base text-stone-600 mt-3 leading-relaxed">
-              Join the Just Born Playroom Circle. We share seasonal play guides, toddler developmental milestones,
+              Join the Just Born Playroom Circle. We share milestone developmental guides, Montessori ideas,
               and private access to handcrafted limited batches.
             </p>
 
@@ -57,7 +57,7 @@ export function NewsletterSection() {
                   <span>You&apos;re On The List!</span>
                 </div>
                 <p className="text-xs text-stone-600">
-                  Use coupon code <strong className="text-stone-900 font-mono text-sm">JUSTBORN15</strong> at checkout for $15 off.
+                  Use coupon code <strong className="text-stone-900 font-mono text-sm">JUSTBORN500</strong> at checkout for ₹500 off.
                 </p>
               </div>
             ) : (
@@ -72,25 +72,25 @@ export function NewsletterSection() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="Enter parent email address..."
-                    className="w-full text-sm rounded-full bg-white border border-stone-200 pl-10 pr-4 py-3 text-stone-900 placeholder:text-stone-400 shadow-sm focus:outline-none focus:border-[#E76F51] focus:ring-2 focus:ring-[#E76F51]/20"
+                    className="w-full text-sm rounded-full bg-white border border-stone-200 pl-10 pr-4 py-3 text-stone-900 placeholder:text-stone-400 shadow-xs focus:outline-none focus:border-[#E63946] focus:ring-2 focus:ring-red-100"
                   />
                 </div>
                 <Button type="submit" size="md" className="shrink-0">
-                  Claim $15 Gift
+                  Claim ₹500 Gift
                 </Button>
               </form>
             )}
 
             {/* Checklist */}
-            <div className="mt-8 pt-6 border-t border-[#FED3C7]/40 flex flex-wrap items-center justify-center gap-6 text-xs text-stone-500 font-medium">
+            <div className="mt-8 pt-6 border-t border-red-100/80 flex flex-wrap items-center justify-center gap-6 text-xs text-stone-500 font-medium">
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#E76F51]" /> Zero spam ever
+                <Sparkles className="w-3.5 h-3.5 text-[#E63946]" /> Zero spam ever
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#E76F51]" /> Instant voucher code
+                <Sparkles className="w-3.5 h-3.5 text-[#E63946]" /> Instant voucher code
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#E76F51]" /> Unsubscribe anytime
+                <Sparkles className="w-3.5 h-3.5 text-[#E63946]" /> Unsubscribe anytime
               </span>
             </div>
           </div>
